@@ -1,0 +1,44 @@
+@import './styles/luxury-styles.css';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Open+Sans:wght@400;600&family=Roboto+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #0A2342;
+  color: #FFFFFF;
+}
+
+.terminal-text {
+  font-family: 'Roboto Mono', monospace;
+  color: #29B6F6;
+}
+
+.section-transition {
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-collapsed {
+  height: 10vh;
+  opacity: 0.5;
+}
+
+.section-expanded {
+  height: 80vh;
+  opacity: 1;
+}
+
+.glow-effect {
+  box-shadow: 0 0 15px rgba(41, 182, 246, 0.5);
+}
+
+.particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}

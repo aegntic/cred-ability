@@ -1,0 +1,226 @@
+/* 
+* Luxury UI Enhancements for CRED-ABILITY 
+* These styles add glass morphism, premium animations, and consistent branding
+*/
+
+/* Section styles - removed some problematic scroll settings */
+.section-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Luxury card styles with glass effect */
+.luxury-card {
+  background: rgba(41, 67, 78, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease; /* Reduced from 0.3s to 0.2s */
+}
+
+.luxury-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(41, 182, 246, 0.3);
+}
+
+/* Premium buttons */
+.premium-button {
+  position: relative;
+  background: linear-gradient(90deg, #29B6F6, #0288D1);
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 0.75rem 2rem;
+  border-radius: 6px;
+  border: none;
+  overflow: hidden;
+  transition: all 0.2s ease; /* Reduced from 0.3s to 0.2s */
+  box-shadow: 0 5px 15px rgba(41, 182, 246, 0.3);
+}
+
+.premium-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.3s ease; /* Reduced from 0.6s to 0.3s */
+}
+
+.premium-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(41, 182, 246, 0.5);
+}
+
+.premium-button:hover::before {
+  left: 100%;
+}
+
+.premium-button.gold {
+  background: linear-gradient(90deg, #FFC107, #FF8F00);
+  box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+}
+
+.premium-button.gold:hover {
+  box-shadow: 0 8px 20px rgba(255, 193, 7, 0.5);
+}
+
+/* Luxury text styles */
+.premium-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  background: linear-gradient(90deg, #FFFFFF, #29B6F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.premium-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #29B6F6, transparent);
+  border-radius: 2px;
+}
+
+/* Animated underline for links */
+.animated-link {
+  position: relative;
+  color: #FFC107;
+  text-decoration: none;
+  transition: all 0.2s ease; /* Reduced from 0.3s to 0.2s */
+  cursor: pointer;
+}
+
+.animated-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #FFC107;
+  transition: width 0.2s ease; /* Reduced from 0.3s to 0.2s */
+}
+
+.animated-link:hover {
+  color: #FFCA28;
+}
+
+.animated-link:hover::after {
+  width: 100%;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.7;
+  transition: opacity 0.2s ease; /* Reduced from 0.3s to 0.2s */
+  cursor: pointer;
+}
+
+.scroll-indicator:hover {
+  opacity: 1;
+}
+
+.scroll-indicator .chevron {
+  width: 20px;
+  height: 8px;
+  opacity: 0;
+  border-right: 3px solid #29B6F6;
+  border-bottom: 3px solid #29B6F6;
+  transform: rotate(45deg);
+  animation: scroll-chevron 1s infinite; /* Reduced from 1.5s to 1s */
+  margin-bottom: -5px;
+}
+
+.scroll-indicator .chevron:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.scroll-indicator .chevron:nth-child(2) {
+  animation-delay: 0.15s; /* Reduced from 0.3s to 0.15s */
+}
+
+.scroll-indicator .chevron:nth-child(3) {
+  animation-delay: 0.3s; /* Reduced from 0.6s to 0.3s */
+}
+
+@keyframes scroll-chevron {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-10px, -10px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+}
+
+/* Subtle animations and transitions */
+.fade-in-up {
+  animation: fadeInUp 0.4s ease-out; /* Reduced from 0.8s to 0.4s */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 35, 66, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(41, 182, 246, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(41, 182, 246, 0.8);
+}
+
+/* Progress indicator */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #29B6F6, #FFC107);
+  transform-origin: 0%;
+  z-index: 100;
+}
