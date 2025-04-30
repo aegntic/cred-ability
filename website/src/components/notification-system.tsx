@@ -27,7 +27,12 @@ const NotificationSystem: React.FC = () => {
         );
       } else {
         // Add the notification
-        setNotifications((prevNotifications) => [...prevNotifications, notification]);
+        setNotifications((prevNotifications) => {
+      if (!prevNotifications.some(n => n.id === notification.id)) {
+        return [...prevNotifications, notification];
+      }
+      return prevNotifications;
+    });
       }
     });
     
@@ -68,7 +73,7 @@ const NotificationSystem: React.FC = () => {
   };
   
   return (
-    <div className="fixed top-4 right-4 z-50 space-y-3 max-w-md w-full">
+    <div className="fixed top-16 right-4 z-40 space-y-3 max-w-md w-full">
       <AnimatePresence>
         {notifications.map((notification) => (
           <motion.div

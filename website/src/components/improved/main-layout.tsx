@@ -1,17 +1,25 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Import custom components
+import NavigationBar from './navigation-bar';
+import ParticleBackground from './particle-background';
 import HeroSection from './sections/hero-section';
+import Footer from './footer';
+
+// Import improved sections
 import ProblemSection from './sections/problem-section';
 import ProductTeaserSection from './sections/product-teaser-section';
 import HowItWorksSection from './sections/how-it-works-section';
 import ExclusiveAccessSection from './sections/exclusive-access-section';
 import FaqSection from './sections/faq-section';
 import FinalCtaSection from './sections/final-cta-section';
-import NavigationBar from './navigation-bar';
-import ParticleBackground from './particle-background';
-import { ExclusiveAccessFormData } from '../types/form-types';
+
+// Types
+import { ExclusiveAccessFormData } from '../../types/form-types';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -26,6 +34,14 @@ const MainLayout: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>(sectionId || 'hero');
   const mainContainerRef = useRef<HTMLDivElement>(null);
   const sectionsRef = useRef<HTMLDivElement>(null);
+  
+  // Setup smooth scrolling progress indicator
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
   
   const sectionRefs = {
     hero: useRef<HTMLDivElement>(null),
@@ -47,7 +63,7 @@ const MainLayout: React.FC = () => {
     }
   }, [sectionId, history]);
 
-  // Setup scroll animations
+  // Setup advanced scroll animations
   useEffect(() => {
     if (!sectionsRef.current) return;
 
@@ -58,11 +74,11 @@ const MainLayout: React.FC = () => {
     Object.entries(sectionRefs).forEach(([id, ref]) => {
       if (!ref.current) return;
       
-      // Create smooth scroll trigger for each section
+      // Create scroll trigger for each section
       ScrollTrigger.create({
         trigger: ref.current,
-        start: 'top center',
-        end: 'bottom center',
+        start: 'top 35%',
+        end: 'bottom 35%',
         onEnter: () => {
           if (activeSection !== id) {
             setActiveSection(id);
@@ -78,25 +94,30 @@ const MainLayout: React.FC = () => {
         markers: false // Set to true for debugging
       });
       
-      // Animate sections as they come into view
-      gsap.fromTo(ref.current, 
-        { 
-          opacity: 0, 
-          y: 50 
-        }, 
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.4,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ref.current,
-            start: "top bottom-=100",
-            end: "center center",
-            toggleActions: "play none none reverse",
+      // Advanced animations for each section
+      const sectionChildren = ref.current.querySelectorAll('.animate-on-scroll');
+      
+      sectionChildren.forEach((element, index) => {
+        gsap.fromTo(
+          element, 
+          { 
+            opacity: 0, 
+            y: 50 
+          }, 
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            delay: index * 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: element,
+              start: "top 90%",
+              toggleActions: "play none none reverse",
+            }
           }
-        }
-      );
+        );
+      });
     });
     
     return () => {
@@ -105,15 +126,16 @@ const MainLayout: React.FC = () => {
     };
   }, []);
 
-  // Handle manual navigation click
+  // Handle scroll to section
   const handleNavigate = (sectionId: string) => {
     const ref = sectionRefs[sectionId as keyof typeof sectionRefs];
     if (ref.current) {
-      ScrollTrigger.disable();
-      ref.current.scrollIntoView({ behavior: 'smooth' });
-      setTimeout(() => {
-        ScrollTrigger.enable();
-      }, 500); // Re-enable after 500ms
+      ref.current.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+      setActiveSection(sectionId);
+      history.replace(`/${sectionId}`, { scroll: false });
     }
   };
 
@@ -129,20 +151,27 @@ const MainLayout: React.FC = () => {
   };
 
   return (
-    <div className="relative" ref={mainContainerRef}>
+    <div className="relative min-h-screen" ref={mainContainerRef}>
+      {/* Scroll progress indicator */}
+      <motion.div 
+        className="progress-bar" 
+        style={{ scaleX }} 
+      />
+      
+      {/* Particle background */}
       <ParticleBackground />
       
-      {/* Luxury glass-effect navigation */}
+      {/* Navigation */}
       <NavigationBar 
         activeSection={activeSection} 
         onNavigate={handleNavigate}
       />
       
       {/* Content container */}
-      <div ref={sectionsRef} className="relative">
+      <div ref={sectionsRef} className="relative pt-20">
         <section 
           ref={sectionRefs.hero}
-          className="min-h-screen py-20 section-container"
+          className="min-h-screen section-container"
           id="hero"
         >
           <HeroSection 
@@ -158,7 +187,7 @@ const MainLayout: React.FC = () => {
         
         <section 
           ref={sectionRefs.problem}
-          className="min-h-screen py-20 section-container"
+          className="min-h-screen section-container"
           id="problem"
         >
           <ProblemSection />
@@ -166,7 +195,7 @@ const MainLayout: React.FC = () => {
         
         <section 
           ref={sectionRefs.teaser}
-          className="min-h-screen py-20 section-container"
+          className="min-h-screen section-container"
           id="teaser"
         >
           <ProductTeaserSection />
@@ -174,7 +203,7 @@ const MainLayout: React.FC = () => {
         
         <section 
           ref={sectionRefs.howItWorks}
-          className="min-h-screen py-20 section-container"
+          className="min-h-screen section-container"
           id="howItWorks"
         >
           <HowItWorksSection />
@@ -182,7 +211,7 @@ const MainLayout: React.FC = () => {
         
         <section 
           ref={sectionRefs.exclusiveAccess}
-          className="min-h-screen py-20 section-container"
+          className="min-h-screen section-container"
           id="exclusiveAccess"
         >
           <ExclusiveAccessSection 
@@ -192,7 +221,7 @@ const MainLayout: React.FC = () => {
         
         <section 
           ref={sectionRefs.faq}
-          className="min-h-screen py-20 section-container"
+          className="min-h-screen section-container"
           id="faq"
         >
           <FaqSection />
@@ -200,7 +229,7 @@ const MainLayout: React.FC = () => {
         
         <section 
           ref={sectionRefs.finalCta}
-          className="min-h-screen py-20 section-container"
+          className="min-h-screen section-container"
           id="finalCta"
         >
           <FinalCtaSection 
@@ -215,6 +244,9 @@ const MainLayout: React.FC = () => {
           />
         </section>
       </div>
+      
+      {/* Footer */}
+      <Footer onNavigate={handleNavigate} />
     </div>
   );
 };

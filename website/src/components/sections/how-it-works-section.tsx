@@ -50,12 +50,12 @@ const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({ isActive = false 
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } }
+    visible: { y: 0, opacity: 1, transition: { duration: 0.2, ease: "easeOut" } }
   };
 
   const cardVariants = {
     initial: { y: 20, opacity: 0 },
-    animate: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
+    animate: { y: 0, opacity: 1, transition: { duration: 0.2, ease: "easeOut" } },
     exit: { y: -20, opacity: 0, transition: { duration: 0.4, ease: "easeIn" } }
   };
 
@@ -138,7 +138,7 @@ const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({ isActive = false 
           className="premium-heading text-3xl md:text-4xl lg:text-5xl mx-auto relative"
           variants={itemVariants}
         >
-          <span className="relative z-10">How CRED-ABILITY Works</span>
+          <span className="relative z-10">How CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY Works</span>
           <span className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-electric-blue to-transparent rounded-full blur-sm"></span>
         </motion.h2>
         

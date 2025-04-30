@@ -82,7 +82,7 @@ const ProductTeaserSection: React.FC<ProductTeaserSectionProps> = ({ isActive = 
           className="text-xl text-white/80 max-w-3xl mx-auto mt-6"
           variants={itemVariants}
         >
-          CRED-ABILITY creates a paradigm shift in credential management through four key innovations
+          CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY creates a paradigm shift in credential management through four key innovations
         </motion.p>
       </div>
       

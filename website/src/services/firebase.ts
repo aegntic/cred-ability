@@ -1,4 +1,4 @@
-// Firebase configuration for the CRED-ABILITY project
+// Firebase configuration for the CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY project
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
