@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # Production website service
+  website:
+    build: 
+      context: ./website
+      dockerfile: Dockerfile
+      args:
+        - USE_IMPROVED=true
+    container_name: cred-ability-website
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    networks:
+      - cred-ability-network
+
+  # Development website service with hot-reloading
+  website-dev:
+    image: node:18-alpine
+    container_name: cred-ability-website-dev
+    working_dir: /app
+    volumes:
+      - ./website:/app
+    ports:
+      - "3000:3000"
+    command: >
+      sh -c "npm install && 
+             cp improved-index.html index.html && 
+             cp improved-vite.config.ts vite.config.ts && 
+             cp improved-tailwind.config.js tailwind.config.js && 
+             sed -i 's/import App from \".\/App\"/import App from \".\/improved-app\"/' src/main.tsx && 
+             sed -i 's/import \".\/index.css\"/import \".\/improved-index.css\"/' src/main.tsx && 
+             npm run dev -- --host"
+    environment:
+      - NODE_ENV=development
+    networks:
+      - cred-ability-network
+
+  # Add additional services here as needed (API, backend, etc.)
+  # Example:
+  # api:
+  #   build: ./server
+  #   container_name: cred-ability-api
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - NODE_ENV=production
+  #   restart: unless-stopped
+  #   networks:
+  #     - cred-ability-network
+
+networks:
+  cred-ability-network:
+    driver: bridge

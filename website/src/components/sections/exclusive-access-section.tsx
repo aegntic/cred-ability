@@ -98,7 +98,7 @@ const ExclusiveAccessSection: React.FC<ExclusiveAccessSectionProps> = ({
           </h2>
           
           <p className="text-lg text-white/80 mb-10">
-            CRED-ABILITY is currently in private beta with limited slots available for qualified organizations and individual users. Join our waitlist to get early access to our revolutionary credential management ecosystem.
+            CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY is currently in private beta with limited slots available for qualified organizations and individual users. Join our waitlist to get early access to our revolutionary credential management ecosystem.
           </p>
           
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
@@ -135,7 +135,7 @@ const ExclusiveAccessSection: React.FC<ExclusiveAccessSectionProps> = ({
               <>
                 <h3 className="text-2xl font-bold text-white mb-6">Request Exclusive Access</h3>
                 <p className="text-white/70 mb-8">
-                  Limited spots available for our early access program. Be among the first to experience CRED-ABILITY.
+                  Limited spots available for our early access program. Be among the first to experience CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY.
                 </p>
                 
                 <form onSubmit={handleSubmit} className="space-y-4">

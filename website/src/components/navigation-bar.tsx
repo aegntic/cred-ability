@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 interface NavigationBarProps {
   activeSection: string;
@@ -13,13 +14,14 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ activeSection, onNavigate
   
   // Navigation items with icons and labels
   const navItems = [
-    { id: 'hero', label: 'Home', icon: 'heroicons:home' },
-    { id: 'problem', label: 'The Problem', icon: 'heroicons:exclamation-triangle' },
+    { id: 'about', label: 'About', icon: 'heroicons:information-circle' },
+    { id: 'problem', label: 'Challenge', icon: 'heroicons:exclamation-triangle' },
     { id: 'teaser', label: 'Our Solution', icon: 'heroicons:light-bulb' },
     { id: 'howItWorks', label: 'How It Works', icon: 'heroicons:cog-6-tooth' },
     { id: 'exclusiveAccess', label: 'Early Access', icon: 'heroicons:key' },
     { id: 'faq', label: 'FAQ', icon: 'heroicons:question-mark-circle' },
     { id: 'finalCta', label: 'Get Started', icon: 'heroicons:arrow-right' },
+    { id: 'contact', label: 'Contact', icon: 'heroicons:envelope' },
   ];
   
   // Handle scroll event to change navbar style
@@ -49,7 +51,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ activeSection, onNavigate
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center">
-            <span className="text-electric-blue font-bold text-xl mr-2">CRED-ABILITY</span>
+            <button onClick={() => onNavigate('hero')} className="text-electric-blue font-bold text-xl mr-2">CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY</button>
             <div className="h-4 w-4 rounded-full bg-electric-blue animate-pulse"></div>
           </div>
           

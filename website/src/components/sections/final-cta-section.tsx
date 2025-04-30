@@ -140,7 +140,7 @@ const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
       >
         <div className="mb-8">
           <div className="flex items-center justify-center mb-4">
-            <span className="text-electric-blue font-bold text-xl mr-2">CRED-ABILITY</span>
+            <span className="text-electric-blue font-bold text-xl mr-2">CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY</span>
             <div className="h-3 w-3 rounded-full bg-electric-blue"></div>
           </div>
           <p>Intelligent Credential Management Ecosystem</p>
@@ -165,7 +165,7 @@ const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
           </a>
         </div>
         
-        <p>&copy; 2025 CRED-ABILITY. All rights reserved.</p>
+        <p>&copy; 2025 CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY. All rights reserved.</p>
       </motion.div>
     </motion.div>
   );

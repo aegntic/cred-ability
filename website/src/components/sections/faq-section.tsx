@@ -33,28 +33,28 @@ const FaqSection: React.FC<FaqSectionProps> = ({ isActive = false }) => {
 
   const faqs = [
     {
-      question: "What makes CRED-ABILITY different from traditional password managers?",
-      answer: "Unlike traditional password managers that require manual entry, CRED-ABILITY automatically detects credentials as you use them, analyzes their relationships, and provides proactive security recommendations. It understands how credentials are connected and gives actionable insights for improving your security posture."
+      question: "What makes CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY different from traditional password managers?",
+      answer: "Unlike traditional password managers that require manual entry, CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY automatically detects credentials as you use them, analyzes their relationships, and provides proactive security recommendations. It understands how credentials are connected and gives actionable insights for improving your security posture."
     },
     {
-      question: "How secure is the CRED-ABILITY credential vault?",
-      answer: "CRED-ABILITY uses AES-256-GCM encryption with Argon2id key derivation, which represents military-grade security. We implement a zero-knowledge architecture, meaning your credentials are encrypted locally and only you have access to the decryption keys. Our defense-in-depth approach includes envelope encryption with a hierarchical key structure."
+      question: "How secure is the CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY credential vault?",
+      answer: "CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY uses AES-256-GCM encryption with Argon2id key derivation, which represents military-grade security. We implement a zero-knowledge architecture, meaning your credentials are encrypted locally and only you have access to the decryption keys. Our defense-in-depth approach includes envelope encryption with a hierarchical key structure."
     },
     {
-      question: "What types of credentials can CRED-ABILITY manage?",
-      answer: "CRED-ABILITY can detect and manage a wide range of credentials including passwords, API keys, OAuth tokens, secret keys, personal access tokens, and more. Our intelligent detection engine recognizes patterns across various platforms and service types."
+      question: "What types of credentials can CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY manage?",
+      answer: "CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY can detect and manage a wide range of credentials including passwords, API keys, OAuth tokens, secret keys, personal access tokens, and more. Our intelligent detection engine recognizes patterns across various platforms and service types."
     },
     {
-      question: "Is CRED-ABILITY available for enterprise use?",
-      answer: "Yes, CRED-ABILITY offers enterprise-focused solutions with team sharing capabilities, role-based access control, compliance modules, and advanced security features. Enterprise deployments include SSO integration, audit reporting, and custom deployment options."
+      question: "Is CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY available for enterprise use?",
+      answer: "Yes, CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY offers enterprise-focused solutions with team sharing capabilities, role-based access control, compliance modules, and advanced security features. Enterprise deployments include SSO integration, audit reporting, and custom deployment options."
     },
     {
       question: "How does the intelligence layer work?",
       answer: "The intelligence layer analyzes the context and relationships between your credentials, mapping services and dependencies. It assesses risk based on multiple factors, generates prioritized security recommendations, and creates rotation plans based on credential usage patterns and vulnerabilities."
     },
     {
-      question: "When will CRED-ABILITY be publicly available?",
-      answer: "CRED-ABILITY is currently in private beta with a limited number of users. We're targeting a public beta release in Q2 2025, with general availability expected in Q3 2025. You can join our waitlist for early access."
+      question: "When will CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY be publicly available?",
+      answer: "CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY is currently in private beta with a limited number of users. We're targeting a public beta release in Q2 2025, with general availability expected in Q3 2025. You can join our waitlist for early access."
     }
   ];
 
@@ -88,7 +88,7 @@ const FaqSection: React.FC<FaqSectionProps> = ({ isActive = false }) => {
           className="text-xl text-white/80 max-w-3xl mx-auto mt-6"
           variants={itemVariants}
         >
-          Everything you need to know about CRED-ABILITY
+          Everything you need to know about CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY
         </motion.p>
       </div>
       

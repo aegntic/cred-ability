@@ -1,5 +1,5 @@
 /**
- * Notification service for CRED-ABILITY
+ * Notification service for CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY
  * Handles system notifications, alerts, and user communications
  */
 

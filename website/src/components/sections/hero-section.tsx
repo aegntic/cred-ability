@@ -47,7 +47,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ isActive = true, onRequestAcc
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.4, ease: "easeOut" } }
+    visible: { y: 0, opacity: 1, transition: { duration: 0.2, ease: "easeOut" } }
   };
 
   return (
@@ -106,7 +106,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ isActive = true, onRequestAcc
           className="text-xl md:text-2xl text-white/80 my-8 max-w-3xl mx-auto"
           variants={itemVariants}
         >
-          CRED-ABILITY transforms how digital credentials are detected, managed, and secured with intelligent context analysis and proactive security recommendations.
+          CRED-<span style={{ fontSize: '1.1em' }}>a</span>BILITY transforms how digital credentials are detected, managed, and secured with intelligent context analysis and proactive security recommendations.
         </motion.p>
         
         <motion.div 

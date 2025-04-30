@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc --noCheck && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@heroui/react": "2.7.6",
@@ -32,6 +33,7 @@
     "@types/three": "^0.162.0",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "10.4.20",
+    "gh-pages": "^6.3.0",
     "postcss": "8.4.49",
     "tailwindcss": "3.4.17",
     "typescript": "5.7.3",
